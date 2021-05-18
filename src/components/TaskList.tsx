@@ -33,7 +33,6 @@ export function TaskList() {
     const newTasks = [...tasks];
     const taskIndex = newTasks.findIndex(task => task.id === id);
     if (taskIndex !== -1) {
-
       newTasks.splice(taskIndex, 1, {
         ...tasks[taskIndex],
         isComplete: !tasks[taskIndex].isComplete,
@@ -45,6 +44,11 @@ export function TaskList() {
 
   function handleRemoveTask(id: number) {
     // Remova uma task da listagem pelo ID
+    const newTasks = [...tasks];
+    const taskToRemoveIndex = newTasks.findIndex(task => task.id === id);
+    newTasks.splice(taskToRemoveIndex, 1);
+
+    setTasks(newTasks);
   }
 
   return (
